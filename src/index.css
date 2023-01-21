@@ -1,13 +1,75 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Rubik', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container {
+  color: #252525;
+  font-size: 22px;
+  margin: 0 auto;
+  padding: 30px;
+
+  width: 90vw;
+
 }
+
+form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding: 20px;
+}
+
+input, .btn {
+  font-size: 20px;
+  border: #c2c2c2 2px solid;
+  border-radius: 5px;
+
+  padding: 5px;
+  margin: 0 20px;
+}
+
+input:focus {
+  outline: none;
+}
+
+input.invalid {
+  border-color: red;
+}
+
+.btn {
+  font-size: 20px;
+  margin: 0;
+  background-color: #ffffff;
+  transition: background-color 0.5s;
+}
+
+.btn:hover {
+  background-color: #c2c2c2;
+}
+
+.error {
+  height: 25px;
+  padding: 20px;
+  font-size: 15px;
+  color: red;
+}
+
+.responses {
+  display: flex;
+}
+
+.vin-list, .current-vin-response {
+  padding: 20px;
+}
+
+.switch-last-vin:hover {
+  cursor: pointer;
+}
+
+.vin-list {
+  width: 30%;
+  border-right: #252525 1px solid;
+}
+
