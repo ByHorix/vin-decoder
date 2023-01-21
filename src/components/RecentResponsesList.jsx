@@ -1,20 +1,16 @@
 import React, { useContext } from 'react';
-import { GlobalContext } from './GlobalContext';
-import { refactorVinList } from '../utils/refactorVinList';
+import { GlobalContext } from '../store/GlobalContext';
 
 export const RecentResponsesList = () => {
   const {
     responseHistory,
     recentVinCodes,
-    setRecentVinCodes,
-    setResponseHistory,
+    setCurrentVin,
+    currentVin,
   } = useContext(GlobalContext);
 
-  const handleOnclickVin = (currentVin) => {
-    if (currentVin !== recentVinCodes[0]) {
-      setRecentVinCodes((prevValue) => [currentVin, ...prevValue.filter((vin) => vin !== currentVin)]);
-      setResponseHistory(refactorVinList(responseHistory, currentVin));
-    }
+  const handleClickVin = (currentVin) => {
+    setCurrentVin(currentVin);
   }
 
   return (
@@ -27,7 +23,7 @@ export const RecentResponsesList = () => {
             {
               recentVinCodes.map((vin) =>
                   (
-                      <li className={'switch-last-vin'} onClick={() => handleOnclickVin(vin)} key={vin}>{vin}</li>
+                      <li className={'switch-last-vin'} onClick={() => handleClickVin(vin)} key={vin}>{vin}</li>
                   )
               ).slice(0, 4)
             }
@@ -45,7 +41,7 @@ export const RecentResponsesList = () => {
           </p>
             <ul>
               {
-                responseHistory[0].results.map(({Value, Variable, VariableId}) => {
+                responseHistory.find(({vin}) => vin === currentVin).results.map(({Value, Variable, VariableId}) => {
                   return (
                       <li key={VariableId}>
                         {`${Variable}: ${Value}`}
