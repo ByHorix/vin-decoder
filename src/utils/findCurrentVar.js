@@ -1,0 +1,1 @@
+export const findCurrentVar = (variablesList, id) => variablesList['Results'].find(({ ID }) => Number(ID) === Number(id));

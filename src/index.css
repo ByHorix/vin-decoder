@@ -51,9 +51,19 @@ input.invalid {
 
 .error {
   height: 25px;
-  padding: 20px;
+  padding: 10px 20px;
   font-size: 15px;
   color: red;
+}
+
+.link {
+  text-decoration: none;
+  color: #252525;
+  transition: color 0.2s;
+}
+
+.link:hover {
+  color: cornflowerblue;
 }
 
 .responses {
@@ -71,5 +81,17 @@ input.invalid {
 .vin-list {
   width: 30%;
   border-right: #252525 1px solid;
+}
+
+.variable-list {
+  list-style: none;
+}
+
+.variable-name {
+  text-decoration: underline;
+}
+
+.variable-name:hover {
+  cursor: pointer;
 }
 

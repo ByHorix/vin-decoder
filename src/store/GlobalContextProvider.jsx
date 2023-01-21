@@ -1,10 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { GlobalContext } from './GlobalContext';
-import { MainScreen } from './MainScreen';
 
-export const GlobalContextProvider = () => {
+export const GlobalContextProvider = ({ children }) => {
   const [responseHistory, setResponseHistory] = useState([]);
   const [recentVinCodes, setRecentVinCodes] = useState([]);
+  const [currentVin, setCurrentVin] = useState('');
+  const [variablesList, setVariablesList] = useState(null);
 
 
   const contextValue = {
@@ -12,11 +13,15 @@ export const GlobalContextProvider = () => {
     setResponseHistory,
     recentVinCodes,
     setRecentVinCodes,
+    currentVin,
+    setCurrentVin,
+    variablesList,
+    setVariablesList,
   };
 
   return (
       <GlobalContext.Provider value={contextValue}>
-        <MainScreen/>
+        {children}
       </GlobalContext.Provider>
   );
 }

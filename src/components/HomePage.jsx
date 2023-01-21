@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { isValid } from '../utils/isValid';
 import cn from '../utils/classNames';
-import fetchRequest from '../utils/fetchRequest';
-import { GlobalContext } from './GlobalContext';
+import { GlobalContext } from '../store/GlobalContext';
 import { RecentResponsesList } from './RecentResponsesList';
-import { refactorVinList } from '../utils/refactorVinList';
+import { filterResults } from '../utils/filterResults';
+import { searchVinCode } from '../services/vinCodes';
+import { Link } from 'react-router-dom';
 
-export const MainScreen = () => {
+export const HomePage = () => {
   const [inputValue, setInputValue] = useState('');
   const [isValidInp, setIsValidInp] = useState(true);
 
@@ -15,28 +16,26 @@ export const MainScreen = () => {
     setResponseHistory,
     recentVinCodes,
     setRecentVinCodes,
+    setCurrentVin,
   } = useContext(GlobalContext);
 
-  const handleOnchange = (e) => {
-    e.preventDefault();
-    const { target: { value } } = e;
-
+  const handleOnchange = ({ target: { value } }) => {
     setInputValue(value.toUpperCase());
     setIsValidInp(true);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (isValid(inputValue)) {
-      setRecentVinCodes((prevValue) => [inputValue, ...prevValue.filter((vin) => vin !== inputValue)]);
       setInputValue('');
 
       if (!recentVinCodes.includes(inputValue)) {
-        fetchRequest(inputValue, setResponseHistory);
-      }
-      else {
-        setResponseHistory(refactorVinList(responseHistory, inputValue));
+        const data = await searchVinCode(inputValue);
+
+        setCurrentVin(inputValue);
+        setResponseHistory((prevState) => [{ vin: inputValue, message: data['Message'] , results: filterResults(data['Results']) }, ...prevState]);
+        setRecentVinCodes((prevValue) => [inputValue, ...prevValue]);
       }
     }
     else {
@@ -69,6 +68,9 @@ export const MainScreen = () => {
                 ? null
                 : 'Поле не должно быть пустым, содержать недопустимые символы, не более 17 символов'
           }
+        </div>
+        <div>
+          <Link className={'link'} to={'/variables'}>Список всех возможных переменных</Link>
         </div>
         <hr/>
         {
