@@ -1,10 +1,10 @@
 import React from 'react';
 import { GlobalContextProvider } from './store/GlobalContextProvider';
-import { HomePage } from './components/HomePage';
+import { HomePage } from './components/HomePage/HomePage';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { VariableList } from './components/VariablesList';
+import { VariableList } from './components/VariablesList/VariablesList';
 import { VariablesContextProvider } from './store/VariablesContext';
-import { VariableDescription } from './components/VariableDescription';
+import { VariableDescription } from './components/VariableDescription/VariableDescription';
 
 function App() {
   return (

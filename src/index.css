@@ -3,95 +3,95 @@ body {
   font-family: 'Rubik', sans-serif;
 }
 
-.container {
-  color: #252525;
-  font-size: 22px;
-  margin: 0 auto;
-  padding: 30px;
+/*.container {*/
+/*  color: #252525;*/
+/*  font-size: 22px;*/
+/*  margin: 0 auto;*/
+/*  padding: 30px;*/
 
-  width: 90vw;
+/*  width: 90vw;*/
 
-}
+/*}*/
 
-form {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+/*form {*/
+/*  display: flex;*/
+/*  flex-direction: row;*/
+/*  align-items: center;*/
 
-  padding: 20px;
-}
+/*  padding: 20px;*/
+/*}*/
 
-input, .btn {
-  font-size: 20px;
-  border: #c2c2c2 2px solid;
-  border-radius: 5px;
+/*input, .btn {*/
+/*  font-size: 20px;*/
+/*  border: #c2c2c2 2px solid;*/
+/*  border-radius: 5px;*/
 
-  padding: 5px;
-  margin: 0 20px;
-}
+/*  padding: 5px;*/
+/*  margin: 0 20px;*/
+/*}*/
 
-input:focus {
-  outline: none;
-}
+/*input:focus {*/
+/*  outline: none;*/
+/*}*/
 
-input.invalid {
-  border-color: red;
-}
+/*input.invalid {*/
+/*  border-color: red;*/
+/*}*/
 
-.btn {
-  font-size: 20px;
-  margin: 0;
-  background-color: #ffffff;
-  transition: background-color 0.5s;
-}
+/*.btn {*/
+/*  font-size: 20px;*/
+/*  margin: 0;*/
+/*  background-color: #ffffff;*/
+/*  transition: background-color 0.5s;*/
+/*}*/
 
-.btn:hover {
-  background-color: #c2c2c2;
-}
+/*.btn:hover {*/
+/*  background-color: #c2c2c2;*/
+/*}*/
 
-.error {
-  height: 25px;
-  padding: 10px 20px;
-  font-size: 15px;
-  color: red;
-}
+/*.error {*/
+/*  height: 25px;*/
+/*  padding: 10px 20px;*/
+/*  font-size: 15px;*/
+/*  color: red;*/
+/*}*/
 
-.link {
-  text-decoration: none;
-  color: #252525;
-  transition: color 0.2s;
-}
+/*.link {*/
+/*  text-decoration: none;*/
+/*  color: #252525;*/
+/*  transition: color 0.2s;*/
+/*}*/
 
-.link:hover {
-  color: cornflowerblue;
-}
+/*.link:hover {*/
+/*  color: cornflowerblue;*/
+/*}*/
 
-.responses {
-  display: flex;
-}
+/*.responses {*/
+/*  display: flex;*/
+/*}*/
 
-.vin-list, .current-vin-response {
-  padding: 20px;
-}
+/*.vin-list, .current-vin-response {*/
+/*  padding: 20px;*/
+/*}*/
 
-.switch-last-vin:hover {
-  cursor: pointer;
-}
+/*.switch-last-vin:hover {*/
+/*  cursor: pointer;*/
+/*}*/
 
-.vin-list {
-  width: 30%;
-  border-right: #252525 1px solid;
-}
+/*.vin-list {*/
+/*  width: 30%;*/
+/*  border-right: #252525 1px solid;*/
+/*}*/
 
-.variable-list {
-  list-style: none;
-}
+/*.variable-list {*/
+/*  list-style: none;*/
+/*}*/
 
-.variable-name {
-  text-decoration: underline;
-}
+/*.variable-name {*/
+/*  text-decoration: underline;*/
+/*}*/
 
-.variable-name:hover {
-  cursor: pointer;
-}
+/*.variable-name:hover {*/
+/*  cursor: pointer;*/
+/*}*/
 

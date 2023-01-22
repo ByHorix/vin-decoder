@@ -1,0 +1,16 @@
+.responses {
+    display: flex;
+}
+
+.vinList, .currentVinResponse {
+    padding: 20px;
+}
+
+.vinList {
+    width: 30%;
+    border-right: #252525 1px solid;
+}
+
+.switchCurrentVin:hover {
+    cursor: pointer;
+}
