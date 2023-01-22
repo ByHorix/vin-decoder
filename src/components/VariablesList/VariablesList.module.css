@@ -1,0 +1,31 @@
+.container {
+    color: #252525;
+    font-size: 22px;
+    margin: 0 auto;
+    padding: 30px;
+    box-sizing: border-box;
+    border: rgba(164,163,160,0.63) 1px solid;
+    width: 90%;
+}
+
+.input {
+    width: 30%;
+    font-size: 20px;
+    padding: 5px 10px;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.variableList {
+    list-style: none;
+}
+
+.variableName {
+    text-decoration: underline;
+}
+
+.variableName:hover {
+    cursor: pointer;
+}

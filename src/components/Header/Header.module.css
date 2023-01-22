@@ -1,0 +1,18 @@
+.header {
+    position: sticky;
+    top: 0;
+    color: #252525;
+    font-size: 22px;
+
+    background-color: rgb(180, 180, 180);
+
+    margin: 0 auto;
+    padding: 20px 30px 0;
+
+    box-sizing: border-box;
+    width: 90%;
+
+    display: flex;
+    justify-content: space-between;
+    justify-items: baseline;
+}

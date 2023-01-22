@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import { GlobalContext } from './GlobalContext';
 
 export const GlobalContextProvider = ({ children }) => {
-  const [responseHistory, setResponseHistory] = useState([]);
+  const [vinCodesInfo, setVinCodesInfo] = useState([]);
   const [recentVinCodes, setRecentVinCodes] = useState([]);
-  const [currentVin, setCurrentVin] = useState('');
+  const [currentVinInfo, setCurrentVinInfo] = useState('');
   const [variablesList, setVariablesList] = useState(null);
 
 
   const contextValue = {
-    responseHistory,
-    setResponseHistory,
+    vinCodesInfo,
+    setVinCodesInfo,
     recentVinCodes,
     setRecentVinCodes,
-    currentVin,
-    setCurrentVin,
+    currentVinInfo,
+    setCurrentVinInfo,
     variablesList,
     setVariablesList,
   };
