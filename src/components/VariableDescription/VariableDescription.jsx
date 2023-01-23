@@ -6,6 +6,7 @@ import { findCurrentVar } from '../../utils/findCurrentVar';
 import { CustomNavLink } from '../CustomNavLink/CustomNavLink';
 import { Header } from '../Header/Header';
 import styles from './VariableDescription.module.css';
+import { Spinner } from '../Spinner/Spinner';
 
 export const VariableDescription = () => {
   const {
@@ -57,7 +58,7 @@ export const VariableDescription = () => {
                         : <h3>Нет переменной с ID = {id}</h3>
                   }
                 </>)
-                : <h3>Loading...</h3>
+                : <Spinner/>
           }
         </div>
       </>

@@ -1,18 +1,18 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../../store/GlobalContext';
 import styles from './VinInfo.module.css';
-import { findCurrentVinInfo } from '../../utils/findCurrentVinInfo';
+import { Spinner } from '../Spinner/Spinner';
 
 export const VinInfo = () => {
   const {
     vinCodesInfo,
     recentVinCodes,
-    setCurrentVinInfo,
-    currentVinInfo,
+    setCurrentVin,
+    currentVin,
   } = useContext(GlobalContext);
 
-  const handleClickVin = (currentVin) => {
-    setCurrentVinInfo(findCurrentVinInfo(vinCodesInfo, currentVin));
+  const handleClickVin = (vin) => {
+    setCurrentVin(vin);
   };
 
   return (
@@ -38,26 +38,34 @@ export const VinInfo = () => {
           </ul>
         </div>
         <div className={styles.currentVinResponse}>
-          <h3>
-            Результаты расшифровки текущего VIN:
-          </h3>
-          <h4>
-            Сообщение:
-          </h4>
-          <p>
-            {currentVinInfo.message}
-          </p>
-            <ul>
-              {
-                currentVinInfo.results.map(({Value, Variable, VariableId}) => {
-                  return (
-                      <li key={VariableId}>
-                        {`${Variable}: ${Value}`}
-                      </li>
-                  );
-                })
-              }
-            </ul>
+          {
+            vinCodesInfo.hasOwnProperty(currentVin)
+              ? (
+                  <>
+                    <h3>
+                      Результаты расшифровки текущего VIN:
+                    </h3>
+                    <h4>
+                      Сообщение:
+                    </h4>
+                    <p>
+                      {vinCodesInfo[currentVin].message}
+                    </p>
+                    <ul>
+                      {
+                        vinCodesInfo[currentVin].results.map(({Value, Variable, VariableId}) => {
+                          return (
+                              <li key={VariableId}>
+                                {`${Variable}: ${Value}`}
+                              </li>
+                          );
+                        })
+                      }
+                    </ul>
+                  </>
+                )
+              : <Spinner/>
+          }
         </div>
       </div>
   );
