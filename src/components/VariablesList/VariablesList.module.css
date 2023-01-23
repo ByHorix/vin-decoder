@@ -29,3 +29,31 @@
 .variableName:hover {
     cursor: pointer;
 }
+@media screen and (max-width: 768px) {
+    .container {
+        font-size: 20px;
+        padding: 20px;
+        width: 100%;
+    }
+
+    .input {
+        width: 50%;
+    }
+
+
+    .description {
+        word-break: break-word;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        font-size: 17px;
+    }
+
+    .input {
+        font-size: 17px;
+        padding: 4px;
+    }
+
+}

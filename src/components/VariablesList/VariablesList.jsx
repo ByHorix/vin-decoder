@@ -28,8 +28,10 @@ export const VariableList = () => {
   }, []);
 
   useEffect(() => {
-    setIsVariablesToShowReady(true);
-  }, [variablesToShow])
+    if (variablesToShow.length > 0) {
+      setIsVariablesToShowReady(true);
+    }
+  }, [variablesToShow]);
 
   const handleInputChange = ({ target: { value } }) => {
     setInputValue(value);
@@ -51,7 +53,7 @@ export const VariableList = () => {
       <>
         <Header>
           <nav>
-            <CustomNavLink path={'/'}>На главную</CustomNavLink>
+            <CustomNavLink path={'/'}>Главная</CustomNavLink>
           </nav>
           <input
               className={styles.input}
@@ -79,7 +81,7 @@ export const VariableList = () => {
                                         >
                                           {variableName}
                                         </dt>
-                                        <dd
+                                        <dd className={styles.description}
                                             dangerouslySetInnerHTML={{ __html: variableDescription }}
                                         />
                                       </React.Fragment>

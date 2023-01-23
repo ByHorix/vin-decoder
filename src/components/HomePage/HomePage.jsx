@@ -64,7 +64,7 @@ export const HomePage = () => {
       <>
         <Header>
           <nav>
-            <CustomNavLink path={'/variables'}>Список всех переменных</CustomNavLink>
+            <CustomNavLink path={'/variables'}>Список переменных</CustomNavLink>
           </nav>
         </Header>
         <div className={styles.container}>
@@ -72,7 +72,7 @@ export const HomePage = () => {
             <div>
               <label htmlFor={'vin'}>Введите VIN-номер:</label>
             </div>
-            <div>
+            <div className={styles.inputContainer}>
               <input
                   className={cn(styles.input, { [styles.invalidInput]: !isValidInp })}
                   onChange={handleOnchange}
@@ -80,6 +80,8 @@ export const HomePage = () => {
                   name={'vin'}
                   value={inputValue}
               />
+            </div>
+            <div className={styles.btnContainer}>
               <button className={styles.btn} type={'submit'}>
                 Отправить
               </button>

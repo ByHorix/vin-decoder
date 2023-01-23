@@ -51,3 +51,40 @@
     color: red;
 }
 
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    .form {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    .input, .btn {
+        box-sizing: border-box;
+        margin: 10px 0;
+        padding: 3px;
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        font-size: 17px;
+    }
+
+    .input, .btn {
+
+        font-size: 17px;
+    }
+
+    .error {
+        font-size: 12px;
+        padding: 10px;
+    }
+}
+
