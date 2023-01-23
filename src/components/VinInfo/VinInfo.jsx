@@ -21,7 +21,7 @@ export const VinInfo = () => {
           <h3>
             Последние запросы:
           </h3>
-          <ul>
+          <ul className={styles.lastVinList}>
             {
               recentVinCodes.slice(0, 5).map((vin) =>
                   (

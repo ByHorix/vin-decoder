@@ -6,6 +6,10 @@
     padding: 20px;
 }
 
+.lastVinList {
+    list-style: none;
+}
+
 .vinList {
     width: 30%;
     border-right: #252525 1px solid;
@@ -13,4 +17,27 @@
 
 .switchCurrentVin:hover {
     cursor: pointer;
+}
+
+@media screen and (max-width: 1024px){
+    .responses {
+        flex-direction: column;
+    }
+
+    .vinList {
+        width: 90%;
+
+        border-right: none;
+    }
+}
+
+@media screen and (max-width: 768px){
+
+}
+
+@media screen and (max-width: 480px){
+
+    .vinList, .currentVinResponse {
+        padding: 10px;
+    }
 }
