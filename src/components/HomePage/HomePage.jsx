@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { isValid } from '../../utils/isValid';
+import { checkIsValid } from '../../utils/isValid';
 import cn from '../../utils/classNames';
 import { GlobalContext } from '../../store/GlobalContext';
 import { VinInfo } from '../VinInfo/VinInfo';
@@ -8,55 +8,55 @@ import { searchVinCode } from '../../services/vinCodes';
 import { Header } from '../Header/Header';
 import styles from './HomePage.module.css';
 import { CustomNavLink } from '../CustomNavLink/CustomNavLink';
-import { findCurrentVinInfo } from '../../utils/findCurrentVinInfo';
 
 export const HomePage = () => {
   const [inputValue, setInputValue] = useState('');
-  const [isValidInp, setIsValidInp] = useState(true);
+  const [isValidInp, setIsValidInp] = useState(false);
+  const [isValidated, setIsValidated] = useState(false);
 
   const {
-    vinCodesInfo,
     setVinCodesInfo,
     recentVinCodes,
     setRecentVinCodes,
-    setCurrentVinInfo,
+    setCurrentVin,
   } = useContext(GlobalContext);
 
-  const handleOnchange = ({ target: { value } }) => {
+  const handleChange = ({ target: { value } }) => {
     setInputValue(value.toUpperCase());
-    setIsValidInp(true);
+    if (isValidated) {
+      setIsValidated(false);
+    }
+  };
+
+  const validate = (inputValue) => {
+    const isValid = checkIsValid(inputValue);
+    setIsValidated(true);
+    setIsValidInp(isValid);
+
+    return isValid;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (isValid(inputValue)) {
+    if (validate(inputValue)) {
+      setCurrentVin(inputValue);
 
       if (!recentVinCodes.includes(inputValue)) {
         const data = await searchVinCode(inputValue);
 
-        setCurrentVinInfo({
-          vin: inputValue,
-          message: data.message,
-          results: filterResults(data.results)
-        });
-        setVinCodesInfo((prevState) => [
-          {
-            vin: inputValue,
+        setCurrentVin(inputValue);
+        setVinCodesInfo((prevState) => ({
+          ...prevState,
+          [inputValue]: {
             message: data.message,
             results: filterResults(data.results)
           },
-          ...prevState
-        ]);
+      }));
         setRecentVinCodes((prevValue) => [inputValue, ...prevValue]);
-      }
-      else {
-        setCurrentVinInfo(findCurrentVinInfo(vinCodesInfo, inputValue));
       }
 
       setInputValue('');
-    } else {
-      setIsValidInp(false);
     }
   };
 
@@ -72,16 +72,16 @@ export const HomePage = () => {
             <div>
               <label htmlFor={'vin'}>Введите VIN-номер:</label>
             </div>
-            <div className={styles.inputContainer}>
+            <div className={styles}>
               <input
-                  className={cn(styles.input, { [styles.invalidInput]: !isValidInp })}
-                  onChange={handleOnchange}
+                  className={cn(styles.input, { [styles.invalidInput]: !isValidInp && isValidated })}
+                  onChange={handleChange}
                   type="text"
                   name={'vin'}
                   value={inputValue}
               />
             </div>
-            <div className={styles.btnContainer}>
+            <div className={styles}>
               <button className={styles.btn} type={'submit'}>
                 Отправить
               </button>
@@ -89,14 +89,14 @@ export const HomePage = () => {
           </form>
           <div className={styles.error}>
             {
-              (isValidInp)
-                  ? null
-                  : 'Поле не должно быть пустым, содержать недопустимые символы, не более 17 символов'
+              (!isValidInp && isValidated)
+                  ? 'Поле не должно быть пустым, содержать недопустимые символы, не более 17 символов'
+                  : null
             }
           </div>
           <hr/>
           {
-            vinCodesInfo.length > 0
+            recentVinCodes.length > 0
                 ? <VinInfo/>
                 : null
           }

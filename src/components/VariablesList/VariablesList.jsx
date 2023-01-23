@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { CustomNavLink } from '../CustomNavLink/CustomNavLink';
 import styles from './VariablesList.module.css';
+import { Spinner } from '../Spinner/Spinner';
 
 export const VariableList = () => {
   const {
@@ -91,7 +92,7 @@ export const VariableList = () => {
                       }
                     </>
                 )
-                : <h3>Loading...</h3>
+                : <Spinner/>
           }
         </div>
       </>
