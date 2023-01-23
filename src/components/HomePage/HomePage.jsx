@@ -64,7 +64,7 @@ export const HomePage = () => {
       <>
         <Header>
           <nav>
-            <CustomNavLink path={'/variables'}>Список переменных</CustomNavLink>
+            <CustomNavLink path={'/variables'}>Список характеристик</CustomNavLink>
           </nav>
         </Header>
         <div className={styles.container}>

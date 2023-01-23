@@ -68,7 +68,7 @@ export const VariableList = () => {
             isVariablesToShowReady
                 ? (
                     <>
-                      <h3>Список переменных и их значений:</h3>
+                      <h3>Список характеристик и их значений:</h3>
                       {
                         variablesToShow.length === 0
                             ? <p>Переменной с именем {inputValue} не существует</p>

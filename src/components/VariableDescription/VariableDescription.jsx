@@ -39,7 +39,7 @@ export const VariableDescription = () => {
               Главная
             </CustomNavLink>
             <CustomNavLink path={'/variables'}>
-              Список переменных
+              Список характеристик
             </CustomNavLink>
           </nav>
         </Header>
