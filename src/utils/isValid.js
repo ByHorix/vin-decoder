@@ -1,7 +1,8 @@
-function containsSpecialChars(str) {
-  const specialChars =
-      /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/;
-  return specialChars.test(str);
-}
+export const checkIsValid = (str) => {
+  const validChars = [
+    '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+  ];
 
-export const checkIsValid = (value) => value.length === 17 && !containsSpecialChars(value);
+  return str.split('').every((char) => validChars.includes(char)) && str.length === 17;
+};
