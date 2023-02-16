@@ -12,7 +12,7 @@ function App() {
       <VariablesContextProvider>
         <BrowserRouter>
           <Routes>
-            <Route path='*' element={<Navigate replace to={'/'}/>} />
+            <Route path='*' element={<Navigate replace to={'/vin-decoder'}/>} />
             <Route path="/" element={<HomePage/>} />
             <Route path='/variables/' element={<VariableList/>} />
             <Route path='/variables/:id' element={<VariableDescription/>} />
