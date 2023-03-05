@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../../store/GlobalContext';
-import styles from './VinInfo.module.css';
+import styles from './VinInfo.module.scss';
 import { Spinner } from '../Spinner/Spinner';
 
 export const VinInfo = () => {
@@ -11,7 +11,7 @@ export const VinInfo = () => {
     currentVin,
   } = useContext(GlobalContext);
 
-  const handleClickVin = (vin) => {
+  const handleClickVin = (vin: string) => {
     setCurrentVin(vin);
   };
 

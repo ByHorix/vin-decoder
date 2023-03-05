@@ -7,18 +7,25 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^29.4.0",
+    "@types/lodash": "^4.14.191",
+    "@types/node": "^18.14.2",
+    "@types/react-dom": "^18.0.11",
+    "@types/sass": "^1.43.1",
+    "classnames": "^2.3.2",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.7.0",
     "react-scripts": "5.0.1",
+    "sass": "^1.58.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "tsc",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -41,6 +48,8 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0"
+    "@types/react": "^18.0.28",
+    "gh-pages": "^5.0.0",
+    "typescript": "^4.9.5"
   }
 }

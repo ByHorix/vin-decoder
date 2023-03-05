@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Spinner.module.css';
+import styles from './Spinner.module.scss';
 
 export const Spinner = () => (
     <div className={styles['lds-ellipsis']}>
