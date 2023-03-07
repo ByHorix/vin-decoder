@@ -1,12 +1,13 @@
 import React from 'react';
-import { GlobalContextProvider } from './store/GlobalContextProvider';
+import { GlobalContextProvider } from './store/GlobalContext';
 import { HomePage } from './components/HomePage/HomePage';
 import { Routes, Route, Navigate, HashRouter } from 'react-router-dom';
 import { VariableList } from './components/VariablesList/VariablesList';
 import { VariablesContextProvider } from './store/VariablesContext';
 import { VariableDescription } from './components/VariableDescription/VariableDescription';
+import './index.scss';
 
-function App() {
+const App: React.FC = () => {
   return (
     <GlobalContextProvider>
       <VariablesContextProvider>

@@ -1,12 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, {ChangeEvent, FormEvent, useContext, useState} from 'react';
 import { checkIsValid } from '../../utils/isValid';
-import cn from '../../utils/classNames';
+import cn from 'classnames';
 import { GlobalContext } from '../../store/GlobalContext';
 import { VinInfo } from '../VinInfo/VinInfo';
-import { filterResults } from '../../utils/filterResults';
 import { searchVinCode } from '../../services/vinCodes';
 import { Header } from '../Header/Header';
-import styles from './HomePage.module.css';
+import styles from './HomePage.module.scss';
 import { CustomNavLink } from '../CustomNavLink/CustomNavLink';
 
 export const HomePage = () => {
@@ -21,14 +20,14 @@ export const HomePage = () => {
     setCurrentVin,
   } = useContext(GlobalContext);
 
-  const handleChange = ({ target: { value } }) => {
+  const handleChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
     setInputValue(value.toUpperCase());
     if (isValidated) {
       setIsValidated(false);
     }
   };
 
-  const validate = (inputValue) => {
+  const validate = (inputValue: string): boolean => {
     const isValid = checkIsValid(inputValue);
     setIsValidated(true);
     setIsValidInp(isValid);
@@ -36,7 +35,7 @@ export const HomePage = () => {
     return isValid;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (validate(inputValue)) {
@@ -50,7 +49,7 @@ export const HomePage = () => {
           ...prevState,
           [inputValue]: {
             message: data.message,
-            results: filterResults(data.results)
+            results: data.results,
           },
       }));
         setRecentVinCodes((prevValue) => [inputValue, ...prevValue]);
@@ -72,16 +71,16 @@ export const HomePage = () => {
             <div>
               <label htmlFor={'vin'}>Введите VIN-номер:</label>
             </div>
-            <div className={styles}>
+            <div>
               <input
-                  className={cn(styles.input, { [styles.invalidInput]: !isValidInp && isValidated })}
+                  className={cn([styles.input, { [styles.invalidInput]: !isValidInp && isValidated }])}
                   onChange={handleChange}
                   type="text"
                   name={'vin'}
                   value={inputValue}
               />
             </div>
-            <div className={styles}>
+            <div>
               <button className={styles.btn} type={'submit'}>
                 Отправить
               </button>

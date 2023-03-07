@@ -5,7 +5,7 @@ import { searchVariables } from '../../services/variables';
 import { findCurrentVar } from '../../utils/findCurrentVar';
 import { CustomNavLink } from '../CustomNavLink/CustomNavLink';
 import { Header } from '../Header/Header';
-import styles from './VariableDescription.module.css';
+import styles from './VariableDescription.module.scss';
 import { Spinner } from '../Spinner/Spinner';
 
 export const VariableDescription = () => {
@@ -13,7 +13,7 @@ export const VariableDescription = () => {
     variables,
   } = useContext(VariablesContext);
 
-  const { id } = useParams();
+  const id = Number(useParams().id);
   const [currentVar, setCurrentVar] = useState(variables && findCurrentVar(variables, id));
   const [isDownloadedData, setIsDownloadedData] = useState(!!variables);
 

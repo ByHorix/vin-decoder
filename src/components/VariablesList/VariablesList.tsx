@@ -1,11 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {ChangeEvent, useContext, useEffect, useState} from 'react';
 import { searchVariables } from '../../services/variables';
 import { VariablesContext } from '../../store/VariablesContext';
 import { useNavigate } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { CustomNavLink } from '../CustomNavLink/CustomNavLink';
-import styles from './VariablesList.module.css';
+import styles from './VariablesList.module.scss';
 import { Spinner } from '../Spinner/Spinner';
+import {VariableDataType} from "../../services/types";
 
 export const VariableList = () => {
   const {
@@ -13,9 +14,9 @@ export const VariableList = () => {
     setVariables,
   } = useContext(VariablesContext);
 
-  const [variablesToShow, setVariablesToShow] = useState([]);
-  const [inputValue, setInputValue] = useState('');
-  const [isVariablesToShowReady, setIsVariablesToShowReady] = useState(false);
+  const [variablesToShow, setVariablesToShow] = useState<VariableDataType[]>([]);
+  const [inputValue, setInputValue] = useState<string>('');
+  const [isVariablesToShowReady, setIsVariablesToShowReady] = useState<boolean>(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -34,7 +35,7 @@ export const VariableList = () => {
     }
   }, [variablesToShow]);
 
-  const handleInputChange = ({ target: { value } }) => {
+  const handleInputChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
     setInputValue(value);
   };
 
