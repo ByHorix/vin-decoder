@@ -2,14 +2,6 @@ import { fetchRequest } from './fetchRequest';
 import { sortBy } from 'lodash';
 import {VariableDataType} from "./types";
 
-// type VariableDataType = {
-//   // DataType: string,
-//   Description: string,
-//   ID: number,
-//   // GroupName: string,
-//   Name: string,
-// }
-
 export const searchVariables = async (): Promise<VariableDataType[]> => {
   const res = await fetchRequest(`/vehicles/GetVehicleVariableList?format=json`);
 
@@ -30,9 +22,6 @@ export const searchVariables = async (): Promise<VariableDataType[]> => {
         variableId
       };
     });
-
-  console.log(variablesColl);
-
 
   return sortBy(variablesColl, (o) => o.variableName);
 };
